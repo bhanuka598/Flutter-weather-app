@@ -17,15 +17,15 @@ class WeatherService {
       'latitude': latitude.toString(),
       'longitude': longitude.toString(),
       'current_weather': 'true',
-      'daily': 'weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,rain_sum',
-      'hourly': 'temperature_2m,precipitation_probability,rain,showers,windspeed_10m,weathercode',
+      'daily': 'weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,precipitation_sum',
+      'hourly': 'temperature_2m,precipitation_probability,precipitation,rain,showers,windspeed_10m,weathercode',
       'timezone': 'auto',
     };
     final fallbackQuery = {
       'latitude': latitude.toString(),
       'longitude': longitude.toString(),
       'current_weather': 'true',
-      'daily': 'weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,rain_sum',
+      'daily': 'weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_sum',
       'hourly': 'time,temperature_2m,precipitation_probability,windspeed_10m',
       'timezone': 'auto',
     };
@@ -33,7 +33,7 @@ class WeatherService {
       'latitude': latitude.toString(),
       'longitude': longitude.toString(),
       'current_weather': 'true',
-      'daily': 'weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,rain_sum',
+      'daily': 'weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_sum',
       'hourly': 'time,temperature_2m,windspeed_10m',
       'timezone': 'auto',
     };
@@ -41,7 +41,7 @@ class WeatherService {
       'latitude': latitude.toString(),
       'longitude': longitude.toString(),
       'current_weather': 'true',
-      'daily': 'weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,rain_sum',
+      'daily': 'weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_sum',
       'timezone': 'auto',
     };
 

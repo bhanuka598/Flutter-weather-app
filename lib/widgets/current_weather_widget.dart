@@ -81,7 +81,7 @@ class CurrentWeatherWidget extends StatelessWidget {
                   ),
                   _buildWeatherInfo(
                     'Rain',
-                    daily != null ? '${daily.rainSum.toStringAsFixed(1)} mm' : 'N/A',
+                    '${current.precipitation.toStringAsFixed(1)} mm',
                     Icons.water_drop,
                   ),
                 ],

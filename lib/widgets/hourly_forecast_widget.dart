@@ -113,14 +113,14 @@ class HourlyForecastWidget extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    if (forecast.rain > 0)
+                    if (forecast.precipitation > 0)
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           const Icon(Icons.water_drop, size: 12, color: Colors.blue),
                           const SizedBox(width: 2),
                           Text(
-                            '${forecast.rain.toStringAsFixed(1)}',
+                            '${forecast.precipitation.toStringAsFixed(1)}',
                             style: const TextStyle(fontSize: 10),
                           ),
                         ],

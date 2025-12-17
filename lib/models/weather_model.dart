@@ -20,7 +20,8 @@ class Weather {
     final times = List<String>.from(hourly["time"]);
     final temps = List<num>.from(hourly["temperature_2m"]);
     final rain = List<num>.from(hourly["rain"] ?? hourly["rainfall"] ?? []);
-    final precipitation = List<num>.from(hourly["precipitation_probability"]);
+    final precipitation = List<num>.from(hourly["precipitation"] ?? []);
+    final precipitationPro = List<num>.from(hourly["precipitation_probability"]);
     final wind = List<num>.from(hourly["windspeed_10m"]);
     final weatherCodes = List<int>.from(hourly["weathercode"]);
 
@@ -28,7 +29,8 @@ class Weather {
       time: DateTime.parse(times[i]),
       temperature: temps[i].toDouble(),
       rain: rain.isNotEmpty ? rain[i].toDouble() : 0.0,
-      precipitationProbability: precipitation[i].toDouble(),
+      precipitation: precipitation.isNotEmpty ? precipitation[i].toDouble() : 0.0,
+      precipitationProbability: precipitationPro[i].toDouble(),
       windSpeed: wind[i].toDouble(),
       weatherCode: weatherCodes[i],
     ));
@@ -47,7 +49,7 @@ class Weather {
       date: DateTime.parse(dates[i]),
       temperatureMax: maxTemps[i].toDouble(),
       temperatureMin: minTemps[i].toDouble(),
-      rainSum: 0.0,
+      precipitationSum: 0.0,
       uvIndexMax: uvMax.isNotEmpty ? uvMax[i].toDouble() : null,
       weatherCode: weatherDailyCodes[i],
     ));
@@ -67,6 +69,7 @@ class HourlyWeather {
   final DateTime time;
   final double temperature;                 // °C
   final double rain;                        // mm
+  final double precipitation;               // mm
   final double precipitationProbability;    // %
   final double windSpeed;                   // km/h
   final double? uvIndex;                    // can be null
@@ -76,6 +79,7 @@ class HourlyWeather {
     required this.time,
     required this.temperature,
     required this.rain,
+    required this.precipitation,
     required this.precipitationProbability,
     required this.windSpeed,
     required this.weatherCode,
@@ -87,6 +91,7 @@ class HourlyWeather {
       time: DateTime.parse(json["time"]),
       temperature: (json["temperature"] as num).toDouble(),
       rain: (json["rain"] ?? 0).toDouble(),
+      precipitation: (json["precipitation"] ?? 0).toDouble(),
       precipitationProbability:
       (json["precipitation_probability"] ?? 0).toDouble(),
       windSpeed: (json["wind_speed"] ?? 0).toDouble(),
@@ -103,7 +108,7 @@ class DailyWeather {
   final DateTime date;
   final double temperatureMax;
   final double temperatureMin;
-  final double rainSum;
+  final double precipitationSum;
   final double? uvIndexMax;
   final int weatherCode;
 
@@ -111,7 +116,7 @@ class DailyWeather {
     required this.date,
     required this.temperatureMax,
     required this.temperatureMin,
-    required this.rainSum,
+    required this.precipitationSum,
     required this.weatherCode,
     this.uvIndexMax,
   });
@@ -121,7 +126,7 @@ class DailyWeather {
       date: DateTime.parse(json["date"]),
       temperatureMax: (json["temperature_max"] as num).toDouble(),
       temperatureMin: (json["temperature_min"] as num).toDouble(),
-      rainSum: (json["rain_sum"] ?? 0).toDouble(),
+      precipitationSum: (json["precipitation_sum"] ?? 0).toDouble(),
       uvIndexMax:
       json["uv_index_max"] != null ? (json["uv_index_max"] as num).toDouble() : null,
       weatherCode: json["weather_code"] ?? 0,
